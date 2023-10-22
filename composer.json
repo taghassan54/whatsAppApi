@@ -1,6 +1,7 @@
 {
     "name": "taghassan54/whatsapp_api",
     "type": "composer-plugin",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Taghassan54\\WhatsappApi\\": "src/"
