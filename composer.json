@@ -1,6 +1,6 @@
 {
     "name": "taghassan54/whatsapp_api",
-    "type": "composer-plugin",
+   
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -10,13 +10,21 @@
     "authors": [
         {
             "name": "taghassan54",
-            "email": "41596304+taghassan54@users.noreply.github.com"
+            "email": "41596304+taghassan54@users.noreply.github.com",
+            "role": "Owner"
         }
     ],
     "extra": {
         "class": "Taghassan54\\WhatsappApi\\WhatsAppApi\\whatsAppApi"
     },
     "require": {
-        "composer-plugin-api": "^2.0"
+        "composer-plugin-api": "^2.0",
+        "php": "^7.2|^8.0|^8.1",
+        "illuminate/console": "^6.0|^7.0|^8.0|^9.0|^10.0",
+        "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0|^10.0",
+        "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0"
+    },
+    "config": {
+        "sort-packages": true
     }
 }
