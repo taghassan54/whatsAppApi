@@ -15,7 +15,7 @@
         }
     ],
     "extra": {
-        "class": "Taghassan54\\whatsapp_api\\Utils\\WhatsAppApi"
+        "class": "Taghassan54\\Utils\\WhatsAppApi"
     },
     "require": {
         "composer-plugin-api": "^2.0",

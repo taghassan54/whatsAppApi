@@ -1,6 +1,6 @@
 <?php
  
- namespace Taghassan54\whatsapp_api\Utils;
+ namespace Taghassan54\Utils;
 	
 	/**
 		* Class WhatsAppApi
