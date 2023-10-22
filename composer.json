@@ -1,0 +1,16 @@
+{
+    "name": "taghassan54/whatsapp_api",
+    "type": "composer-plugin",
+    "autoload": {
+        "psr-4": {
+            "Taghassan54\\WhatsappApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "taghassan54",
+            "email": "41596304+taghassan54@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
