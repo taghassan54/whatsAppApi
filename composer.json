@@ -16,5 +16,7 @@
     "extra": {
         "class": "Taghassan54\\WhatsappApi\\WhatsAppApi\\whatsAppApi"
     },
-    "require": {}
+    "require": {
+        "composer-plugin-api": "^2.0"
+    }
 }
