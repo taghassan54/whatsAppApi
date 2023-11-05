@@ -1,68 +1,68 @@
 <?php
- 
- namespace Taghassan54\Utils;
-	
+
+ namespace Taghassan54\WhatsappApi\Utils;
+
 	/**
 		* Class WhatsAppApi
 		* @package WhatsAppApi
 	*/
-	
+
     class WhatsAppApi {
         protected $token = '';
-        protected $instance_id = '';  
-		
+        protected $instance_id = '';
+
 		        protected $appkey = '';
-        protected $authkey = '';  
-		
+        protected $authkey = '';
+
         /**
 			* WhatsAppApi constructor.
 			* @param $token
 			* @param $instance_id
 		*/
         public function __construct($appkey, $authkey,$instance_id){
-//             $this->token = $token; 
+//             $this->token = $token;
 // 			$this->instance_id = "instance".preg_replace('/[^0-9]/', '',$instance_id);
 $this->instance_id = $instance_id;
 		        $this->appkey = $appkey;
-        $this->authkey = $authkey; 
-			
+        $this->authkey = $authkey;
+
 		}
-		
+
 	 static	public function getInstanc(){
-	   return  $api=new  \App\CPU\WhatsAppApi("e2f0336a-e82b-4fd7-8a02-e9afdc2a3db1","SHfzYxYqhmkjG5MZhWiw2WQX0S8RYfuEBsiBN1pFjqFMtTatEV",'e1188b20-1061-4305-a221-f34a38ac5d85');
+	   return  $api=new  WhatsAppApi("e2f0336a-e82b-4fd7-8a02-e9afdc2a3db1","SHfzYxYqhmkjG5MZhWiw2WQX0S8RYfuEBsiBN1pFjqFMtTatEV",'e1188b20-1061-4305-a221-f34a38ac5d85');
 	 }
-		
+
 		// messages
 		public function getMessages($page=1,$limit=100,$status="all",$sort="asc",$id="",$referenceId="",$from="",$to="",$ack=""){
 			$params =array("page"=>$page,"limit"=>$limit,"status"=>$status,"sort"=>$sort,"id"=>$id,"referenceId"=>$referenceId,"from"=>$from,"to"=>$to,"ack"=>$ack);
 			return $this->sendRequest("GET","messages",$params );
 		}
-		
+
 		public function getMessageStatistics(){
 			return $this->sendRequest("GET","messages/statistics");
 		}
-		
+
 		public function sendChatMessage($to,$body,$priority=10,$referenceId=""){
 			$params =array("to"=>$to,"message"=>$body,"priority"=>$priority,"referenceId"=>$referenceId);
 			return $this->sendRequest("POST","/create-message",$params );
 		}
-		
+
 		public function sendImageMessage($to,$image,$caption="",$priority=10,$referenceId="",$nocache=false){
 			$params =array("to"=>$to,"message"=>$caption,"file"=>$image,"priority"=>$priority,"referenceId"=>$referenceId,"nocache"=>$nocache);
 			return $this->sendRequest("POST","/create-message",$params );
 		}
-		
+
 		//TODO
 			public function sendStickerMessage($to,$sticker,$priority=10,$referenceId="",$nocache=false){
 			$params =array("to"=>$to,"sticker"=>$sticker,"priority"=>$priority,"referenceId"=>$referenceId,"nocache"=>$nocache);
 			return $this->sendRequest("POST","messages/sticker",$params );
 		}
-		
+
 		public function sendLinkMessage($to,$link,$priority=10,$referenceId=""){
 			$params =array("to"=>$to,"link"=>$link,"priority"=>$priority,"referenceId"=>$referenceId);
 			return $this->sendRequest("POST","messages/link",$params );
 		}
-		
+
 		public function sendContactMessage($to,$contact,$priority=10,$referenceId=""){
 			$params =array("to"=>$to,"contact"=>$contact,"priority"=>$priority,"referenceId"=>$referenceId);
 			return $this->sendRequest("POST","messages/contact",$params );
@@ -83,109 +83,109 @@ $this->instance_id = $instance_id;
 		$params =array("status"=>$status);
 		return $this->sendRequest("POST","messages/resendByStatus",$params );
 		}
-		
+
 		public function resendById($id){
 		$params =array("id"=>$id);
 		return $this->sendRequest("POST","messages/resendById",$params );
 		}
-		
+
 		// instance
-		
+
 		public function getInstanceStatus(){
 		return $this->sendRequest("GET","instance/status");
 		}
-		
+
 		public function getInstanceQr(){
 		return $this->sendRequest("GET","instance/qr");
 		}
-		
+
 		public function getInstanceQrCode(){
 		return $this->sendRequest("GET","instance/qrCode");
 		}
-		
+
 		public function getInstanceScreenshot($encoding=""){
 		return $this->sendRequest("GET","instance/screenshot",array("encoding"=>$encoding));
 		}
-		
+
 		public function getInstanceMe(){
 		return $this->sendRequest("GET","instance/me");
 		}
-		
+
 		public function getInstanceSettings(){
 		return $this->sendRequest("GET","instance/settings");
 		}
-		
+
 		public function sendInstanceTakeover(){
 		return $this->sendRequest("POST","instance/takeover" );
 		}
-		
+
 		public function sendInstanceLogout(){
 		return $this->sendRequest("POST","instance/logout" );
 		}
-		
+
 		public function sendInstanceRestart(){
 		return $this->sendRequest("POST","instance/restart" );
 		}
-		
+
 		public function sendInstanceSettings($sendDelay="1",$webhook_url="",$webhook_message_received=false,$webhook_message_create=false,$webhook_message_ack=false,$webhook_message_download_media=false){
 		$params =array("sendDelay"=>$sendDelay,"webhook_url"=>$webhook_url,"webhook_message_received"=>json_encode($webhook_message_received),"webhook_message_create"=>json_encode($webhook_message_create),"webhook_message_ack"=>json_encode($webhook_message_ack),"webhook_message_download_media"=>json_encode($webhook_message_download_media));
 		return $this->sendRequest("POST","instance/settings",$params);
 		}
-		
+
 		public function sendInstanceClear(){
 		return $this->sendRequest("POST","instance/clear" );
 		}
-		
+
 		// Chats
-		
+
 		public function getChats(){
 		return $this->sendRequest("GET","chats");
 		}
-		
+
 		public function getChatsMessages($chatId,$limit=100){
 		$params =array("chatId"=>$chatId,"limit"=>$limit);
 		return $this->sendRequest("GET","chats/messages",$params);
 		}
-		
+
 		// Contacts
-		
+
 		public function getContacts(){
 		return $this->sendRequest("GET","contacts");
 		}
-		
+
 		public function getContact($chatId){
 		$params =array("chatId"=>$chatId);
 		return $this->sendRequest("GET","contacts/contact",$params);
 		}
-		
+
 		public function getBlockedContacts(){
 		return $this->sendRequest("GET","contacts/blocked");
 		}
-		
+
 		public function checkContact($chatId){
 		$params =array("chatId"=>$chatId);
 		return $this->sendRequest("GET","contacts/check",$params);
 		}
-		
+
 		public function blockContact($chatId){
 		$params =array("chatId"=>$chatId);
 		return $this->sendRequest("POST","contacts/block",$params);
 		}
-		
+
 		public function unblockContact($chatId){
 		$params =array("chatId"=>$chatId);
 		return $this->sendRequest("POST","contacts/unblock",$params);
 		}
-		
+
 		public function sendRequest($method,$path,$params=array()){
-		
+
 		if(!is_callable('curl_init')){
 		return array("Error"=>"cURL extension is disabled on your server");
 		}
 	//	$url="https://api.WhatsAppApi.com/".$this->instance_id."/".$path;
 	$url ="https://to100msg.online/api".$path;
 	//	$params['token'] = $this->token;
-	
+
 	$params['authkey'] = $this->authkey;
 		$params['appkey'] = $this->appkey;
 	$params['deviceId'] = $this->instance_id;
@@ -195,7 +195,7 @@ $this->instance_id = $instance_id;
 		if(strtolower($method)=="post"){
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_POSTFIELDS,$data);
-		}	 
+		}
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -210,17 +210,17 @@ $this->instance_id = $instance_id;
 		$header = substr($response, 0, $header_size);
 		$body = substr($response, $header_size);
 		curl_close($curl);
-		
+
 		if (strpos($contentType,'application/json') !== false) {
 		return json_decode($body,true);
 		}
 		return $body;
 		}
-		
-		
-		
-		
-		}	
-		
-	
+
+
+
+
+		}
+
+
 
