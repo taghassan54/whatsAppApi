@@ -1,10 +1,10 @@
 <?php
  
- namespace Taghassan54\whatsapp_api\Utils;
+ namespace Taghassan54\Utils;
 	
 	/**
 		* Class WhatsAppApi
-		* @package Ultramsg
+		* @package WhatsAppApi
 	*/
 	
     class WhatsAppApi {
@@ -15,7 +15,7 @@
         protected $authkey = '';  
 		
         /**
-			* Ultramsg constructor.
+			* WhatsAppApi constructor.
 			* @param $token
 			* @param $instance_id
 		*/
@@ -182,7 +182,7 @@ $this->instance_id = $instance_id;
 		if(!is_callable('curl_init')){
 		return array("Error"=>"cURL extension is disabled on your server");
 		}
-	//	$url="https://api.ultramsg.com/".$this->instance_id."/".$path;
+	//	$url="https://api.WhatsAppApi.com/".$this->instance_id."/".$path;
 	$url ="https://to100msg.online/api".$path;
 	//	$params['token'] = $this->token;
 	
