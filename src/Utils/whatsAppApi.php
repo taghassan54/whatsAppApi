@@ -28,8 +28,8 @@ $this->instance_id = $instance_id;
 
 		}
 
-	 static	public function getInstanc(){
-	   return  $api=new  WhatsAppApi("e2f0336a-e82b-4fd7-8a02-e9afdc2a3db1","SHfzYxYqhmkjG5MZhWiw2WQX0S8RYfuEBsiBN1pFjqFMtTatEV",'e1188b20-1061-4305-a221-f34a38ac5d85');
+	 static	public function getInstanc($appkey="", $authkey="",$instance_id=""){
+	   return  $api=new  WhatsAppApi($appkey, $authkey,$instance_id);
 	 }
 
 		// messages
