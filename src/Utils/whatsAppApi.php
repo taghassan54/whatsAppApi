@@ -6,13 +6,16 @@ namespace Taghassan54\WhatsappApi\Utils;
  * Class WhatsAppApi
  * @package WhatsAppApi
  */
+
 class WhatsAppApi
 {
+
     protected $token = '';
     protected $instance_id = '';
 
     protected $appkey = '';
     protected $authkey = '';
+    protected $basUrl = 'https://to100msg.online';
 
     /**
      * WhatsAppApi constructor.
@@ -33,6 +36,14 @@ class WhatsAppApi
     {
         //edited
         return $api = new  WhatsAppApi($appkey, $authkey, $instance_id);
+    }
+
+    /**
+     * @param string $basUrl
+     */
+    public function setBasUrl(string $basUrl): void
+    {
+        $this->basUrl = $basUrl;
     }
 
     // messages
@@ -222,7 +233,7 @@ class WhatsAppApi
             return array("Error" => "cURL extension is disabled on your server");
         }
         //	$url="https://api.WhatsAppApi.com/".$this->instance_id."/".$path;
-        $url = "https://to100msg.online/api" . $path;
+        $url = $this->basUrl."/api" . $path;
         //	$params['token'] = $this->token;
 
         $params['authkey'] = $this->authkey;
