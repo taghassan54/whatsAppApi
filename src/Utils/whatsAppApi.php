@@ -50,7 +50,7 @@ class WhatsAppApi
     public function getMessages($page = 1, $limit = 100, $status = "all", $sort = "asc", $id = "", $referenceId = "", $from = "", $to = "", $ack = "")
     {
         $params = array("page" => $page, "limit" => $limit, "status" => $status, "sort" => $sort, "id" => $id, "referenceId" => $referenceId, "from" => $from, "to" => $to, "ack" => $ack);
-        return $this->sendRequest("GET", "messages", $params);
+        return $this->sendRequest("GET", "getChats/".$this->instance_id, $params);
     }
 
     public function getMessageStatistics()
