@@ -29,6 +29,7 @@ $this->instance_id = $instance_id;
 		}
 
 	 static	public function getInstanc($appkey="", $authkey="",$instance_id=""){
+		//edited
 	   return  $api=new  WhatsAppApi($appkey, $authkey,$instance_id);
 	 }
 
